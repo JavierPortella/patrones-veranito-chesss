@@ -1,6 +1,14 @@
+package ui.pieces;
+
+import logic.ChessGraveyard;
+import logic.ChessGameEngine;
+import ui.board.ChessGameBoard;
+import ui.game.ChessPanel;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+
 // -------------------------------------------------------------------------
 /**
  * Abstract class that is used to represent a game piece on the chess board.
@@ -33,15 +41,15 @@ public abstract class ChessGamePiece{
     /**
      * Represents a black piece as an int
      */
-    static final int            BLACK      = 0;
+    public static final int            BLACK      = 0;
     /**
      * Represents a white piece as an int
      */
-    static final int            WHITE      = 1;
+    public static final int            WHITE      = 1;
     /**
      * Represents a piece that has not been assigned a color
      */
-    static final int            UNASSIGNED = -1;
+    public static final int            UNASSIGNED = -1;
     // ----------------------------------------------------------
     /**
      * Create a new GamePiece object.

@@ -1,3 +1,13 @@
+package ui.board;
+
+import ui.game.ChessPanel;
+import ui.pieces.Bishop;
+import ui.pieces.ChessGamePiece;
+import ui.pieces.King;
+import ui.pieces.Knight;
+import ui.pieces.Pawn;
+import ui.pieces.Queen;
+import ui.pieces.Rook;
 import java.util.ArrayList;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

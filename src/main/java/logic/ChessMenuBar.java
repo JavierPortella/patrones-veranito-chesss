@@ -1,6 +1,10 @@
+package logic;
+
 import java.awt.Component;
 import java.awt.event.*;
 import javax.swing.*;
+
+import ui.game.ChessPanel;
 // -------------------------------------------------------------------------
 /**
  * Represents the north menu-bar that contains various controls for the game.

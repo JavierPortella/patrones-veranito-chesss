@@ -1,3 +1,9 @@
+package ui.game;
+import ui.board.ChessGameBoard;
+import logic.ChessGameEngine;
+import logic.ChessGameLog;
+import logic.ChessGraveyard;
+import logic.ChessMenuBar;
 import java.awt.*;
 import javax.swing.*;
 // -------------------------------------------------------------------------
