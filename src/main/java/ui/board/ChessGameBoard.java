@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.Serializable;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
@@ -234,7 +235,7 @@ public class ChessGameBoard extends JPanel {
      * @version 2010.11.16
      */
     private class BoardListener
-            implements MouseListener {
+            implements MouseListener, Serializable {
         /**
          * Do an action when the left mouse button is clicked.
          *
