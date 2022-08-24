@@ -6,7 +6,7 @@ import ui.board.BoardSquare;
 import ui.pieces.ChessGamePiece;
 import ui.pieces.King;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
@@ -25,7 +25,7 @@ public class ChessGameEngine {
     private ChessGamePiece currentPiece;
     private boolean firstClick;
     private int currentPlayer;
-    private ChessGameBoard board;
+    private final ChessGameBoard board;
     private King king1;
     private King king2;
 
@@ -97,13 +97,13 @@ public class ChessGameEngine {
      * @return boolean true if the player does have legal moves, false otherwise
      */
     public boolean playerHasLegalMoves(int playerNum) {
-        ArrayList<ChessGamePiece> pieces;
-        if (playerNum == 1) {
-            pieces = board.getAllWhitePieces();
-        } else if (playerNum == 2) {
-            pieces = board.getAllBlackPieces();
-        } else {
-            return false;
+        List<ChessGamePiece> pieces;
+        switch (playerNum) {
+            case 1 -> pieces = board.getAllWhitePieces();
+            case 2 -> pieces = board.getAllBlackPieces();
+            default -> {
+                return false;
+            }
         }
         for (ChessGamePiece currPiece : pieces) {
             if (currPiece.hasLegalMoves(board)) {
@@ -126,17 +126,10 @@ public class ChessGameEngine {
         }
         if (currentPlayer == 2) // black player
         {
-            if (currentPiece.getColorOfPiece() == ChessGamePiece.BLACK) {
-                return true;
-            }
-            return false;
-        } else
-        // white player
+            return (currentPiece.getColorOfPiece() == ChessGamePiece.BLACK);
+        } else // white player
         {
-            if (currentPiece.getColorOfPiece() == ChessGamePiece.WHITE) {
-                return true;
-            }
-            return false;
+            return (currentPiece.getColorOfPiece() == ChessGamePiece.WHITE);
         }
     }
 
@@ -178,7 +171,6 @@ public class ChessGameEngine {
             reset();
         } else {
             board.resetBoard(false);
-            // System.exit(0);
         }
     }
 

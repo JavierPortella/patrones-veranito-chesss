@@ -78,8 +78,8 @@ public class Pawn
      * @return ArrayList<String> the moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
-        ArrayList<String> moves = new ArrayList<String>();
+    protected final ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
+        ArrayList<String> moves = new ArrayList<>();
         if (isPieceOnScreen()) {
             int currRow = getColorOfPiece() == ChessGamePiece.WHITE
                     ? (pieceRow - 1)
@@ -128,15 +128,13 @@ public class Pawn
      */
     @Override
     public ImageIcon createImageByPieceType() {
-        if (getColorOfPiece() == ChessGamePiece.WHITE) {
-            return new ImageIcon(
+        return switch (getColorOfPiece()) {
+            case ChessGamePiece.WHITE -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/WhitePawn.gif"));
-        } else if (getColorOfPiece() == ChessGamePiece.BLACK) {
-            return new ImageIcon(
+            case ChessGamePiece.BLACK -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/BlackPawn.gif"));
-        } else {
-            return new ImageIcon(
+            default -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/default-Unassigned.gif"));
-        }
+        };
     }
 }

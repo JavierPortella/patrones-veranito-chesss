@@ -51,7 +51,7 @@ public class King
         ArrayList<String> southMoves = calculateSouthMoves(board, 1);
         ArrayList<String> eastMoves = calculateEastMoves(board, 1);
         ArrayList<String> westMoves = calculateWestMoves(board, 1);
-        ArrayList<String> allMoves = new ArrayList<String>();
+        ArrayList<String> allMoves = new ArrayList<>();
         allMoves.addAll(northEastMoves);
         allMoves.addAll(northWestMoves);
         allMoves.addAll(southWestMoves);
@@ -71,7 +71,7 @@ public class King
      * @return true if checked, false if not checked
      */
     public boolean isChecked(ChessGameBoard board) {
-        return getCurrentAttackers(board).size() > 0;
+        return !getCurrentAttackers(board).isEmpty();
     }
 
     /**
@@ -81,15 +81,13 @@ public class King
      */
     @Override
     public ImageIcon createImageByPieceType() {
-        if (getColorOfPiece() == ChessGamePiece.WHITE) {
-            return new ImageIcon(
+        return switch (getColorOfPiece()) {
+            case ChessGamePiece.WHITE -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/WhiteKing.gif"));
-        } else if (getColorOfPiece() == ChessGamePiece.BLACK) {
-            return new ImageIcon(
+            case ChessGamePiece.BLACK -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/BlackKing.gif"));
-        } else {
-            return new ImageIcon(
+            default -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/default-Unassigned.gif"));
-        }
+        };
     }
 }

@@ -45,7 +45,7 @@ public class Bishop extends ChessGamePiece {
 		ArrayList<String> northWestMoves = calculateNorthWestMoves(board, 8);
 		ArrayList<String> southEastMoves = calculateSouthEastMoves(board, 8);
 		ArrayList<String> southWestMoves = calculateSouthWestMoves(board, 8);
-		ArrayList<String> allMoves = new ArrayList<String>();
+		ArrayList<String> allMoves = new ArrayList<>();
 		allMoves.addAll(northEastMoves);
 		allMoves.addAll(northWestMoves);
 		allMoves.addAll(southEastMoves);
@@ -60,15 +60,13 @@ public class Bishop extends ChessGamePiece {
 	 */
 	@Override
 	public ImageIcon createImageByPieceType() {
-		if (getColorOfPiece() == ChessGamePiece.WHITE) {
-			return new ImageIcon(
+		return switch (getColorOfPiece()) {
+			case ChessGamePiece.WHITE -> new ImageIcon(
 					getClass().getResource("../../resources/chessImages/WhiteBishop.gif"));
-		} else if (getColorOfPiece() == ChessGamePiece.BLACK) {
-			return new ImageIcon(
+			case ChessGamePiece.BLACK -> new ImageIcon(
 					getClass().getResource("../../resources/chessImages/BlackBishop.gif"));
-		} else {
-			return new ImageIcon(
+			default -> new ImageIcon(
 					getClass().getResource("../../resources/chessImages/BlackBishop.gif"));
-		}
+		};
 	}
 }

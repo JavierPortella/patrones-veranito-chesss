@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 // -------------------------------------------------------------------------
 /**
  * Represents a Rook game piece.
@@ -15,43 +16,46 @@ import java.util.Map;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class Rook extends ChessGamePiece{
-	protected Map<Integer, String> icons_map;
-	// private ArrayList<String> possibleMoves;
+public class Rook extends ChessGamePiece {
+	protected Map<Integer, String> iconsMap;
+
 	// ----------------------------------------------------------
 	/**
 	 * Create a new Rook object.
 	 *
 	 * @param board
-	 *            the board to create the rook on
+	 *              the board to create the rook on
 	 * @param row
-	 *            the row to create the rook on
+	 *              the row to create the rook on
 	 * @param col
-	 *            the column to create the rook on
+	 *              the column to create the rook on
 	 * @param color
-	 *            either GamePiece.WHITE, BLACK, or UNASSIGNED
+	 *              either GamePiece.WHITE, BLACK, or UNASSIGNED
 	 */
-	public Rook( ChessGameBoard board, int row, int col, int color ){
-		super( board, row, col, color );
+	public Rook(ChessGameBoard board, int row, int col, int color) {
+		super(board, row, col, color);
 	}
+
 	/**
 	 * Calculates the possible moves for this Rook.
+	 * 
 	 * @param board the board to check on
 	 * @return ArrayList<String> the list of moves
 	 */
 	@Override
-	protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-			ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
-			ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
-			ArrayList<String> westMoves = calculateWestMoves( board, 8 );
-			ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
-			ArrayList<String> allMoves = new ArrayList<String>();
-			allMoves.addAll( northMoves );
-			allMoves.addAll( southMoves );
-			allMoves.addAll( westMoves );
-			allMoves.addAll( eastMoves );
-			return allMoves;
+	protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
+		ArrayList<String> northMoves = calculateNorthMoves(board, 8);
+		ArrayList<String> southMoves = calculateSouthMoves(board, 8);
+		ArrayList<String> westMoves = calculateWestMoves(board, 8);
+		ArrayList<String> eastMoves = calculateEastMoves(board, 8);
+		ArrayList<String> allMoves = new ArrayList<>();
+		allMoves.addAll(northMoves);
+		allMoves.addAll(southMoves);
+		allMoves.addAll(westMoves);
+		allMoves.addAll(eastMoves);
+		return allMoves;
 	}
+
 	/**
 	 * Creates an icon for this piece depending on the piece's color.
 	 *
@@ -59,12 +63,12 @@ public class Rook extends ChessGamePiece{
 	 */
 	@Override
 	public ImageIcon createImageByPieceType() {
-		icons_map = new HashMap<Integer, String>();
+		iconsMap = new HashMap<Integer, String>();
 
-		icons_map.put(-1, "../../resources/chessImages/default-Unassigned.gif");
-		icons_map.put(ChessGamePiece.BLACK, "../../resources/chessImages/BlackRook.gif");
-		icons_map.put(ChessGamePiece.WHITE, "../../resources/chessImages/WhiteRook.gif");
-		
-		return new ImageIcon(getClass().getResource(this.icons_map.get(getColorOfPiece())));
+		iconsMap.put(-1, "../../resources/chessImages/default-Unassigned.gif");
+		iconsMap.put(ChessGamePiece.BLACK, "../../resources/chessImages/BlackRook.gif");
+		iconsMap.put(ChessGamePiece.WHITE, "../../resources/chessImages/WhiteRook.gif");
+
+		return new ImageIcon(getClass().getResource(this.iconsMap.get(getColorOfPiece())));
 	}
 }

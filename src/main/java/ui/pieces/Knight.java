@@ -41,7 +41,7 @@ public class Knight
      * @return ArrayList<String> a list of the possible moves
      */
     private ArrayList<String> calculateNorthMoves(ChessGameBoard board) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         for (int i = 2; i >= -2; i -= 4) {
             for (int j = 1; j >= -1; j -= 2) {
                 if (isOnScreen(pieceRow + i, pieceColumn + j)
@@ -66,7 +66,7 @@ public class Knight
      * @return ArrayList<String> a list of the possible moves
      */
     private ArrayList<String> calculateSouthMoves(ChessGameBoard board) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         for (int i = 1; i >= -1; i -= 2) {
             for (int j = 2; j >= -2; j -= 4) {
                 if (isOnScreen(pieceRow + i, pieceColumn + j)
@@ -91,7 +91,7 @@ public class Knight
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         if (isPieceOnScreen()) {
             moves.addAll(calculateNorthMoves(board));
             moves.addAll(calculateSouthMoves(board));
@@ -106,15 +106,13 @@ public class Knight
      */
     @Override
     public ImageIcon createImageByPieceType() {
-        if (getColorOfPiece() == ChessGamePiece.WHITE) {
-            return new ImageIcon(
+        return switch (getColorOfPiece()) {
+            case ChessGamePiece.WHITE -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/WhiteKnight.gif"));
-        } else if (getColorOfPiece() == ChessGamePiece.BLACK) {
-            return new ImageIcon(
+            case ChessGamePiece.BLACK -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/BlackKnight.gif"));
-        } else {
-            return new ImageIcon(
+            default -> new ImageIcon(
                     getClass().getResource("../../resources/chessImages/default-Unassigned.gif"));
-        }
+        };
     }
 }
