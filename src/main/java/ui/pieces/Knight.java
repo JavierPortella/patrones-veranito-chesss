@@ -87,7 +87,7 @@ public class Knight
      *
      * @param board
      *              the game board to check
-     * @return ArrayList<String> the list of possible moves
+     * @return ArrayList<> the list of possible moves
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {

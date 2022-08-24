@@ -25,9 +25,9 @@ import javax.swing.ImageIcon;
  * @version 2010.11.17
  */
 public abstract class ChessGamePiece implements Serializable {
-    private boolean skipMoveGeneration;
-    private int pieceColor;
-    private ImageIcon pieceImage;
+    private final boolean skipMoveGeneration;
+    private final int pieceColor;
+    private final ImageIcon pieceImage;
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
@@ -129,7 +129,7 @@ public abstract class ChessGamePiece implements Serializable {
      *
      * @param board
      *              the board to check moves on
-     * @return ArrayList<String> the list of moves
+     * @return ArrayList<> the list of moves
      */
     protected abstract ArrayList<String> calculatePossibleMoves(
             ChessGameBoard board);
@@ -142,7 +142,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the calculated moves.
+     * @return ArrayList<> the calculated moves.
      */
     protected ArrayList<String> calculateSouthMoves(
             ChessGameBoard board,
@@ -174,7 +174,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return ArrayList<> the moves in this direction
      */
     protected ArrayList<String> calculateNorthMoves(
             ChessGameBoard board,
@@ -206,7 +206,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return ArrayList<> the moves in this direction
      */
     protected ArrayList<String> calculateEastMoves(
             ChessGameBoard board,
@@ -238,7 +238,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return ArrayList<> the moves in this direction
      */
     protected ArrayList<String> calculateWestMoves(
             ChessGameBoard board,
@@ -270,7 +270,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return ArrayList<> the moves in this direction
      */
     protected ArrayList<String> calculateNorthWestMoves(
             ChessGameBoard board,
@@ -305,7 +305,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return ArrayList<> the moves in this direction
      */
     protected ArrayList<String> calculateNorthEastMoves(
             ChessGameBoard board,
@@ -340,7 +340,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return ArrayList<> the moves in this direction
      */
     protected ArrayList<String> calculateSouthWestMoves(
             ChessGameBoard board,
@@ -375,7 +375,7 @@ public abstract class ChessGamePiece implements Serializable {
      *                 the board to calculate the moves on
      * @param numMoves
      *                 the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return ArrayList<> the moves in this direction
      */
     protected ArrayList<String> calculateSouthEastMoves(
             ChessGameBoard board,
@@ -683,7 +683,7 @@ public abstract class ChessGamePiece implements Serializable {
      * Gets a list of GamePieces that can currently attack this game piece.
      *
      * @param board the game board to check on
-     * @return ArrayList<GamePiece> the list of attackers
+     * @return ArrayList<> the list of attackers
      */
     public List<ChessGamePiece> getCurrentAttackers(ChessGameBoard board) {
         ArrayList<ChessGamePiece> attackers = new ArrayList<>();
@@ -704,6 +704,31 @@ public abstract class ChessGamePiece implements Serializable {
             }
         }
         return attackers;
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * Gets the all posible movements of the king and queen
+     *
+     * @param board the game board to check on
+     * @param num the number of directions
+     * @return ArrayList<> the moves of the piece
+     */
+    protected ArrayList<String> generateMoves(ChessGameBoard board, int num) {
+        ArrayList<String>[] moves = new ArrayList[num];
+        moves[0] = calculateNorthEastMoves(board, num);
+        moves[1] = calculateNorthWestMoves(board, num);
+        moves[2] = calculateSouthEastMoves(board, num);
+        moves[3] = calculateSouthWestMoves(board, num);
+        moves[4] = calculateNorthMoves(board, num);
+        moves[5] = calculateSouthMoves(board, num);
+        moves[6] = calculateEastMoves(board, num);
+        moves[7] = calculateWestMoves(board, num);
+        ArrayList<String> allMoves = new ArrayList<>();
+        for (ArrayList<String> move : moves) {
+            allMoves.addAll(move);
+        }
+        return allMoves;
     }
 
     /**

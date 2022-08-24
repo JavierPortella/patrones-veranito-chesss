@@ -22,7 +22,7 @@ import java.io.Serializable;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class ChessGameEngine implements Serializable{
+public class ChessGameEngine implements Serializable {
     private ChessGamePiece currentPiece;
     private boolean firstClick;
     private int currentPlayer;
@@ -256,22 +256,22 @@ public class ChessGameEngine implements Serializable{
                 currentPiece.showLegalMoves(board);
                 squareClicked.setBackground(Color.GREEN);
                 firstClick = false;
+                return;
+            }
+            if (currentPiece != null) {
+                JOptionPane.showMessageDialog(
+                        squareClicked,
+                        "You tried to pick up the other player's piece! "
+                                + "Get some glasses and pick a valid square.",
+                        "Illegal move",
+                        JOptionPane.ERROR_MESSAGE);
             } else {
-                if (currentPiece != null) {
-                    JOptionPane.showMessageDialog(
-                            squareClicked,
-                            "You tried to pick up the other player's piece! "
-                                    + "Get some glasses and pick a valid square.",
-                            "Illegal move",
-                            JOptionPane.ERROR_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(
-                            squareClicked,
-                            "You tried to pick up an empty square! "
-                                    + "Get some glasses and pick a valid square.",
-                            "Illegal move",
-                            JOptionPane.ERROR_MESSAGE);
-                }
+                JOptionPane.showMessageDialog(
+                        squareClicked,
+                        "You tried to pick up an empty square! "
+                                + "Get some glasses and pick a valid square.",
+                        "Illegal move",
+                        JOptionPane.ERROR_MESSAGE);
             }
         } else {
             if (pieceOnSquare == null ||

@@ -40,7 +40,7 @@ public class Rook extends ChessGamePiece {
 	 * Calculates the possible moves for this Rook.
 	 * 
 	 * @param board the board to check on
-	 * @return ArrayList<String> the list of moves
+	 * @return ArrayList<> the list of moves
 	 */
 	@Override
 	protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
@@ -63,7 +63,7 @@ public class Rook extends ChessGamePiece {
 	 */
 	@Override
 	public ImageIcon createImageByPieceType() {
-		iconsMap = new HashMap<Integer, String>();
+		iconsMap = new HashMap<>();
 
 		iconsMap.put(-1, "../../resources/chessImages/default-Unassigned.gif");
 		iconsMap.put(ChessGamePiece.BLACK, "../../resources/chessImages/BlackRook.gif");

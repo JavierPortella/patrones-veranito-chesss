@@ -39,24 +39,11 @@ public class King
      *
      * @param board
      *              the game board to calculate moves on
-     * @return ArrayList<String> the moves
+     * @return ArrayList<> the moves
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
-				ArrayList<String>[] moves = new ArrayList[8];
-				moves[0] = calculateNorthEastMoves(board, 1);
-				moves[1] = calculateNorthWestMoves(board, 1);
-				moves[2] = calculateSouthEastMoves(board, 1);
-				moves[3] = calculateSouthWestMoves(board, 1);
-				moves[4] = calculateNorthMoves(board, 1);
-				moves[5] = calculateSouthMoves(board, 1);
-				moves[6] = calculateEastMoves(board, 1);
-				moves[7] = calculateWestMoves(board, 1);
-        ArrayList<String> allMoves = new ArrayList<>();
-				for(ArrayList<String> move : moves){
-					allMoves.addAll(move);
-				}
-        return allMoves;
+        return generateMoves(board, 1);
     }
 
     /**

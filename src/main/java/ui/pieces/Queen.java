@@ -37,24 +37,11 @@ public class Queen
      * Calculates the possible moves for this Queen.
      * 
      * @param board the board to check on
-     * @return ArrayList<String> the list of moves
+     * @return ArrayList<> the list of moves
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
-				ArrayList<String>[] moves = new ArrayList[8];
-				moves[0] = calculateNorthEastMoves(board, 8);
-				moves[1] = calculateNorthWestMoves(board, 8);
-				moves[2] = calculateSouthEastMoves(board, 8);
-				moves[3] = calculateSouthWestMoves(board, 8);
-				moves[4] = calculateNorthMoves(board, 8);
-				moves[5] = calculateSouthMoves(board, 8);
-				moves[6] = calculateEastMoves(board, 8);
-				moves[7] = calculateWestMoves(board, 8);
-        ArrayList<String> allMoves = new ArrayList<>();
-				for(ArrayList<String> move : moves){
-					allMoves.addAll(move);
-				}
-        return allMoves;
+        return generateMoves(board, 8);
     }
 
     /**
@@ -73,4 +60,6 @@ public class Queen
                     getClass().getResource("../../resources/chessImages/default-Unassigned.gif"));
         };
     }
+
+    
 }

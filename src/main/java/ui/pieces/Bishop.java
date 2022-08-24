@@ -37,7 +37,7 @@ public class Bishop extends ChessGamePiece {
 	 * 
 	 * @param board
 	 *              the game board to calculate moves on
-	 * @return ArrayList<String> the moves
+	 * @return ArrayList<> the moves
 	 */
 	@Override
 	protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {

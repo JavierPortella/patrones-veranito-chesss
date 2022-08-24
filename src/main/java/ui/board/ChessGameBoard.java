@@ -90,7 +90,7 @@ public class ChessGameBoard extends JPanel {
     /**
      * Gets all the white game pieces on the board.
      *
-     * @return List<ChessGamePiece> the pieces
+     * @return List<> the pieces
      */
     public List<ChessGamePiece> getAllWhitePieces() {
         ArrayList<ChessGamePiece> whitePieces = new ArrayList<>();
@@ -109,7 +109,7 @@ public class ChessGameBoard extends JPanel {
     /**
      * Gets all the black pieces on the board
      *
-     * @return ArrayList<GamePiece> the pieces
+     * @return ArrayList<> the pieces
      */
     public List<ChessGamePiece> getAllBlackPieces() {
         ArrayList<ChessGamePiece> blackPieces = new ArrayList<>();
