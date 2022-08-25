@@ -715,7 +715,7 @@ public abstract class ChessGamePiece implements Serializable {
      * @return ArrayList<> the moves of the piece
      */
     protected ArrayList<String> generateMoves(ChessGameBoard board, int num) {
-        ArrayList<String>[] moves = new ArrayList[num];
+        ArrayList<String>[] moves = new ArrayList[8];
         moves[0] = calculateNorthEastMoves(board, num);
         moves[1] = calculateNorthWestMoves(board, num);
         moves[2] = calculateSouthEastMoves(board, num);
